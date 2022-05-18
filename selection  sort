@@ -1,0 +1,95 @@
+Algorithm Selection sort
+//
+//
+//
+
+step 1. Repeat For J = 1 to N
+step 2. Set MIN = J
+step 3. Repeat For K = J+1 to N
+step 4. If (A[K] < A[MIN]) Then
+step 5. Set MIN = K
+[End of If]
+[End of Step 3 For Loop]
+step 6. Interchange A[J] and A[MIN]
+[End of Step 1 For Loop]
+step 7. Exit
+
+// Program
+
+
+#include<iostream.h>
+#include<conio.h>
+class demo
+{
+int a[10],i, min_index,j,n,temp;
+public:
+void get();
+void asc_sort();
+void dsc_sort();
+void disp();
+};
+void demo::get()
+{
+cout<<"\nEnter the array size:";
+cin>>n;
+cout<<"\nEnter the array element:";
+for(i=1;i<=n;i++)
+cin>>a[i];
+}
+void demo::asc_sort()
+{
+for(i=1;i<=n-1;i++)
+{
+min_index=i;
+for(j=i+1;j<=n;j++)
+{
+if(a[j]<a[min_index])
+min_index=j;
+}
+if(min_index!=i)
+{
+temp=a[min_index];
+a[min_index]=a[i];
+a[i]=temp;
+}
+}
+}
+void demo::dsc_sort()
+{
+for(i=1;i<=n;i++)
+{
+min_index=i;
+for(j=i+1;j<=n;j++)
+{
+if(a[j]>a[min_index])
+min_index=j;
+}
+if(min_index!=i)
+{
+23
+temp=a[min_index];
+a[min_index]=a[i];
+a[i]=temp;
+}
+}
+}
+void demo::disp()
+{
+cout<<"\n The array element are";
+for(i=1;i<=n;i++)
+cout<<a[i]<<"\t";
+}
+void main()
+{
+clrscr();
+demo d;
+d.get();
+d.disp();
+d.asc_sort();
+cout<<"\nAfter ascending sort:";
+d.disp();
+d.dsc_sort();
+cout<<"\n After Descending sort:";
+d.disp();
+getch();
+}
