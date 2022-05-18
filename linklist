@@ -1,0 +1,177 @@
+// linklist program
+#include<iostream.h>
+#include<conio.h>
+#include<process.h>
+class linklist
+{
+int ele,data;
+linklist *start,*link,*move,*next,*temp1,*temp2;
+public:
+linklist()
+{
+start=NULL;
+}
+void insertbeg();
+void insertend();
+void delbeg();
+void delend();
+void search();
+void show();
+void count();
+};
+void linklist::insertbeg()
+{
+cout<<"\nenter elements "<<endl;
+cin>>ele;
+linklist *node;
+node=new linklist();
+node->data=ele;
+node->link=NULL;
+if(start==NULL)
+{
+start=node;
+}
+else
+{
+node->link=start;
+start=node;
+}
+}
+void linklist::insertend()
+{
+cout<<" insert at End "<<endl;
+cin>>ele;
+linklist *node=new linklist();
+node->link=NULL;
+node->data=ele;
+if(start==NULL)
+{
+}
+else
+{
+temp1=start;
+while(temp1->link!=NULL)
+{
+temp1=temp1->link;
+}
+temp1->link=node;
+}
+}
+void linklist::delbeg()
+{
+if(start==NULL)
+{
+cout<<"Linklist is empty"<<endl;
+}
+else
+{
+temp1=start;
+start=temp1->link;
+delete temp1;
+}
+}
+void linklist::delend()
+{
+if(start==NULL)
+{
+cout<<"Linklist is empty"<<endl;
+}
+else
+{
+temp2=start;
+while(temp2->link!=NULL)
+{
+temp1=temp1->link;
+}
+temp1->link=NULL;
+}
+}
+void linklist::show()
+{
+if(start==NULL)
+{
+cout<<" node is empty "<<endl;
+}
+else
+{
+move=start;
+while(move!=NULL)
+{
+cout<<move->data;
+move=move->link;
+}
+}
+}
+void linklist::search()
+{
+int s;
+cout<<" enter element to search "<<endl;
+cin>>s;
+if(start==NULL)
+{
+cout<<"node is empty"<<endl;
+}
+else
+{
+move=start;
+while(move!=NULL)
+{
+if(move->data==s)
+{
+cout<<" data found "<<endl;
+move=move->next;
+}
+else
+{
+cout<<" data not found "<<endl;
+move=move->next;
+}
+}
+}
+}
+void linklist::count()
+{
+int c;
+ if(start==NULL)
+ {
+cout<<"Empty";
+ }
+ else
+ {
+ linklist *temp;
+ temp=start;
+c=0;
+ while(temp!=NULL)
+ {
+ c=c+temp->data;
+ temp=temp->link;
+ }
+ }
+ cout<<"sum "<<c;
+}
+void main()
+{
+clrscr();
+linklist l;
+int ch;
+cout<<"1.insertBeg 2.insertEnd 3.show 4.search 5.count 6.DelBeg 7.DelEnd 
+8.exit"<<endl;
+while(ch!=8)
+{
+cout<<"\nenter your choise "<<endl;
+cin>>ch;
+switch(ch)
+{
+case 1:l.insertbeg();break;
+case 2:l.insertend();break;
+case 3:l.show();break;
+case 4:l.search();break;
+case 5:l.count();break;
+case 6:l.delbeg();break;
+case 7:l.delend();break;
+case 8:exit(0);
+default:cout<<" you entered wrong choise "<<endl;
+}
+}
+getch();
+}
